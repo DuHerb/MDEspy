@@ -2,3 +2,22 @@
   border-bottom: 2px solid black;
   margin: 5px;
 }
+
+.doc-info-practice {
+  margin-left: 20px;
+  border-top: 1px solid gray;
+  padding: 5px 10px;
+  width: 400px;
+}
+
+.doc-info-practice-name {
+  font-weight: bold;
+}
+
+.isAccepting {
+  color: green;
+}
+
+.notAccepting {
+  color: red;
+}

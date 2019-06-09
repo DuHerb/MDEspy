@@ -6,29 +6,8 @@ export function sanitize(string) {
 }
 
 export function buildResultsByName(doctor){
-  let isAccepting = "";
-  if(doctor.practices[0].accepts_new_patients != null){
-    if(doctor.practices[0].accepts_new_patients){
-      isAccepting = "Is accepting new patients";
-    } else {
-      isAccepting = "Is accepting new patients";
-    }
-  }
 
-  let website = "";
-  if(doctor.practices[0].website != undefined){
-    website = doctor.practices[0].website;
-  }
-
-  $('output').append('<div class="doc-info-box">'+ getDocName(doctor)+ getDocPractices(doctor.practices) + '<p>'+ isAccepting +'</p></div>');
-  // $('output').append('<div class="doc-info-box">',
-  //   '<p class="doc-info-name">Name: '+ docObject.profile.first_name + ' ' +docObject.profile.last_name +'</p>',
-  //   '<p class="doc-info-practice">Practice: ' + docObject.practices[0].name + '</p>',
-  //   '<p>Address: ' + docObject.practices[0].visit_address.street + ', ' + docObject.practices[0].visit_address.city + ', '+ docObject.practices[0].visit_address.state + ' ' + docObject.practices[0].visit_address.zip +'</p>',
-  //   '<p>' + docObject.practices[0].phones[0].number + '</p>',
-  //   '<a href="'+ docObject.practices[0].website +'">' + website  + '</a>',
-  //   '<p>'+ isAccepting +'</p>',
-  //   '</div>');
+  $('output').append('<div class="doc-info-box">'+ getDocName(doctor)+ getDocPractices(doctor.practices));
 }
 
 export function hasPractice(doctor){
@@ -40,24 +19,38 @@ export function hasPractice(doctor){
 }
 
 function getDocName(doctor) {
-  return '<p class="doc-info-name">Name: '+ doctor.profile.first_name + ' ' +doctor.profile.last_name +'</p>';
+  return '<h2 class="doc-info-name">'+ doctor.profile.first_name + ' ' +doctor.profile.last_name +'</h2>';
+}
+
+function ifAccepting(practice){
+  let acceptingStr = "";
+  if(practice.accepts_new_patients != null){
+    if(practice.accepts_new_patients){
+      acceptingStr = '<p class="isAccepting">Is accepting new patients.</p>';
+    } else {
+      acceptingStr = '<p class="notAccepting">Is NOT accepting new patients.</p>';
+    }
+  }
+  return acceptingStr;
 }
 
 function getDocPractices(practices) {
-  let addressString = "";
+  let stringStart = '<div class="doc-info-practices"><p class="doc-info-practice-head">Associated Practices:</p>';
+  let stringBody = '';
+
   practices.forEach(practice => {
+    let accepting = ifAccepting(practice);
     let website = "";
     if(practice.website != undefined){website = practice.website;}
 
-    addressString += '<p class="doc-info-practice">Practice: ' + practice.name + '</p><p>Address: ' + practice.visit_address.street + ', ' + practice.visit_address.city + ', '+ practice.visit_address.state + ' ' + practice.visit_address.zip +'</p><p>' + practice.phones[0].number + '</p><a href="'+ practice.website +'">' + website  + '</a>'
+    stringBody += `<div class="doc-info-practice"><p class="doc-info-practice-name">${practice.name}</p><p>Address:<br>${practice.visit_address.street}<br> ${practice.visit_address.city}, ${practice.visit_address.state} ${practice.visit_address.zip}</p><p>Phone Number: ${practice.phones[0].number}</p><a href="${website}">${website}</a>${accepting}</div>`;
   });
 
-  return addressString;
+  return stringStart + stringBody + '</div>';
 }
 
 export function initData(search) {
   return search.callDoctor().then(response => {
-    // search.data = response.data;
     search.meta = response.meta;
     search.display = new Display(response.data);
   });
