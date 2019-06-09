@@ -1,3 +1,4 @@
-#jsOutput {
-  color: red;
+.doc-info-box {
+  border-bottom: 2px solid black;
+  margin: 5px;
 }
