@@ -24,7 +24,7 @@ export class Search {
 
   buildUrl(){
     this.washWholeName();
-    return `https://api.betterdoctor.com/2016-03-01/doctors?name=${this.wholeName}&skip=0&limit=10&user_key=6a9f294ca89a54b2651b0feac7d4820c`;
+    return `https://api.betterdoctor.com/2016-03-01/doctors?name=${this.wholeName}&skip=0&limit=10&user_key=${process.env.export.apiKey}`;
   }
 
 }
