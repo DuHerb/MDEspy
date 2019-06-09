@@ -3,6 +3,7 @@ import $ from 'jquery';
 import './styles.css';
 import { callDoctor } from './apiCalls';
 import { Search } from './search';
+import { Display } from './display';
 // import { format } from 'path';
 
 $(document).ready(function(){
@@ -12,7 +13,7 @@ $(document).ready(function(){
     newSearch.wholeName = $('#docName').val().trim();
     console.log(newSearch.wholeName);
 
-    initData(newSearch).then(()=> displaySearchByName(newSearch.data));
+    initData(newSearch).then(()=> newSearch.display.showResultsByName());
     // let promise = newSearch.callDoctor();
 
     // promise.then(response => {

@@ -1,5 +1,6 @@
 import { sanitize } from "./functions";
 import $ from 'jquery';
+import { Display } from "./display";
 
 export class Mdespsy {
   constructor(){
