@@ -5,13 +5,6 @@ export function sanitize(string) {
   return string.trim();
 }
 
-// export function displaySearchByName(data){
-//   // let firstName = response.data[0]['profile']['first_name'];
-//   data.forEach(element => {
-//     buildResultsByName(element);
-//   });
-// }
-
 export function buildResultsByName(doctor){
   let isAccepting = "";
   if(doctor.practices[0].accepts_new_patients != null){
@@ -27,7 +20,7 @@ export function buildResultsByName(doctor){
     website = doctor.practices[0].website;
   }
 
-  $('output').append('<div class="doc-info-box">'+ getDocName(doctor)+'<p class="doc-info-practice">Practice: ' + doctor.practices[0].name + '</p><p>Address: ' + doctor.practices[0].visit_address.street + ', ' + doctor.practices[0].visit_address.city + ', '+ doctor.practices[0].visit_address.state + ' ' + doctor.practices[0].visit_address.zip +'</p><p>' + doctor.practices[0].phones[0].number + '</p><a href="'+ doctor.practices[0].website +'">' + website  + '</a><p>'+ isAccepting +'</p></div>');
+  $('output').append('<div class="doc-info-box">'+ getDocName(doctor)+ getDocPractices(doctor.practices) + '<p>'+ isAccepting +'</p></div>');
   // $('output').append('<div class="doc-info-box">',
   //   '<p class="doc-info-name">Name: '+ docObject.profile.first_name + ' ' +docObject.profile.last_name +'</p>',
   //   '<p class="doc-info-practice">Practice: ' + docObject.practices[0].name + '</p>',
@@ -50,12 +43,19 @@ function getDocName(doctor) {
   return '<p class="doc-info-name">Name: '+ doctor.profile.first_name + ' ' +doctor.profile.last_name +'</p>';
 }
 
-function getDocAddress(doctor) {
+function getDocPractices(practices) {
+  let addressString = "";
+  practices.forEach(practice => {
+    let website = "";
+    if(practice.website != undefined){website = practice.website;}
 
+    addressString += '<p class="doc-info-practice">Practice: ' + practice.name + '</p><p>Address: ' + practice.visit_address.street + ', ' + practice.visit_address.city + ', '+ practice.visit_address.state + ' ' + practice.visit_address.zip +'</p><p>' + practice.phones[0].number + '</p><a href="'+ practice.website +'">' + website  + '</a>'
+  });
+
+  return addressString;
 }
 
 export function initData(search) {
-  console.log("inside initData");
   return search.callDoctor().then(response => {
     // search.data = response.data;
     search.meta = response.meta;

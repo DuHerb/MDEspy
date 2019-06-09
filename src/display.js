@@ -8,5 +8,5 @@ export class Display {
   showResultsByName() {
     this.data.forEach(doctor => {if(hasPractice(doctor))buildResultsByName(doctor);});
   }
-  
+
 }
