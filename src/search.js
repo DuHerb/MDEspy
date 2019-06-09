@@ -21,7 +21,7 @@ export class Search {
 
   washWholeName() {
     let nameAry = this.wholeName.split(" ");
-    nameAry.forEach( word => sanitize(word));
+    this.wholeName.split(" ").forEach( word => sanitize(word));
     nameAry.join('&20');
   }
 

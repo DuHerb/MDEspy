@@ -6,7 +6,7 @@ export function sanitize(string) {
 
 export function displaySearchByName(response){
   // let firstName = response.data[0]['profile']['first_name'];
-  response.data.forEach(element => {
+  response.forEach(element => {
     buildResultsByName(element);
   });
 }

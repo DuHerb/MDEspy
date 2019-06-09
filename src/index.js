@@ -12,6 +12,7 @@ $(document).ready(function(){
     newSearch.wholeName = $('#docName').val().trim();
     console.log(newSearch.wholeName);
 
+    initData(newSearch).then(()=> displaySearchByName(newSearch.data));
     // let promise = newSearch.callDoctor();
 
     // promise.then(response => {
@@ -20,7 +21,6 @@ $(document).ready(function(){
     //   console.log(newSearch.data[0]['profile']);
     // });
   
-    initData(newSearch).then(()=> console.log(newSearch.data));
 
     
   });
