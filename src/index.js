@@ -1,4 +1,4 @@
-import {sanitize, displaySearchByName} from './functions';
+import {sanitize, displaySearchByName, initData} from './functions';
 import $ from 'jquery';
 import './styles.css';
 import { callDoctor } from './apiCalls';
@@ -12,7 +12,17 @@ $(document).ready(function(){
     newSearch.wholeName = $('#docName').val().trim();
     console.log(newSearch.wholeName);
 
-    callDoctor(newSearch.buildUrl()).then((response)=> displaySearchByName(response));
+    // let promise = newSearch.callDoctor();
+
+    // promise.then(response => {
+    //   newSearch.data = response.data;
+    //   newSearch.meta = response.meta;
+    //   console.log(newSearch.data[0]['profile']);
+    // });
+  
+    initData(newSearch).then(()=> console.log(newSearch.data));
+
+    
   });
 
 });
