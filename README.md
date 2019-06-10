@@ -24,9 +24,10 @@ From your terminal:
 
 ### Known Issues, Bugs, and ToDos
 
-1. Needs Pagination.  Will be handled by Mdespy object, creating a new search for each URL, saved locally
-2. More search options.  Search form input will be sent to URLbuilder and construct unique URLs based on non-null fields
-3. Styling
+- Needs Pagination.  Will be handled by Mdespy object, creating a new search for each URL, saved locally
+- More search options.  Search form input will be sent to URLbuilder and construct unique URLs based on non-null fields
+- Error handling
+- Styling
 
 ### Support and contact details
 
