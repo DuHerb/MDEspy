@@ -31,11 +31,14 @@ $(document).ready(function(){
 
   $('#catSelect').change(()=> buildSpecSelect($('#catSelect').val()));
 
+  //submit search parameters
   $('#searchSubmit').on('click', (e)=>{
     e.preventDefault();
     $('output').empty();
 
     //url builder will parse form data into unique URL strings
+    let docName = $('#docName').val().trim();
+    let docSpec = $('#specSelect').val();
     let url = new URLbuilder($('#docName').val().trim()).buildUrl();
 
     //searches local storage for identical search results
