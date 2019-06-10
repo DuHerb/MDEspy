@@ -24,11 +24,9 @@ From your terminal:
 
 ### Known Issues, Bugs, and ToDos
 
-1. needs more validation options to trigger display messages(maybe an error parser in the solarage object)
-2. Planets outside Jupiter (saturn, uranus and neptune) are not included in options yet. They are so far out that your
-   solar age on any of those planets would be under one year old, and as of now, solarage logic floors all outputs to the lowest
-   whole number, which isn't helpful when you'd need to measure age in decimals. The planets have been included in the solarage object
-   for future updates.
+1. Needs Pagination.  Will be handled by Mdespy object, creating a new search for each URL, saved locally
+2. More search options.  Search form input will be sent to URLbuilder and construct unique URLs based on non-null fields
+3. Styling
 
 ### Support and contact details
 
@@ -39,6 +37,7 @@ Contact Dustin Herboldshimer at dustnpdx@gmail.com
 1. Webpack
 2. Jest
 3. Jquery
+4. api/betterdoctor.com
 
 ### License
 
