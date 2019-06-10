@@ -3,12 +3,22 @@ import $ from 'jquery';
 import './styles.css';
 import { Search, URLbuilder } from './search';
 import { Mdespy } from './mdespy';
-import { Display } from './display';
+import { Display, buildCatSelect, buildSpecSelect } from './display';
+import { getCategories } from './apiCalls';
 
 //init sessionStorage for search data storage
 if(!sessionStorage.getItem('mdespy')){
   let newMdespy = JSON.stringify(new Mdespy());
   sessionStorage.setItem('mdespy', newMdespy);
+}
+
+if(!sessionStorage.getItem('categories')){
+  getCategories().then(response => {
+    sessionStorage.setItem('categories', JSON.stringify(response));
+    buildCatSelect();
+  });
+} else {
+  buildCatSelect();
 }
 
 $(document).ready(function(){
@@ -18,6 +28,8 @@ $(document).ready(function(){
 
   //for testing purposes.  button clears session storage values
   $('#clearSession').on('click', ()=> sessionStorage.clear() );
+
+  $('#catSelect').change(()=> buildSpecSelect($('#catSelect').val()));
 
   $('#searchSubmit').on('click', (e)=>{
     e.preventDefault();
