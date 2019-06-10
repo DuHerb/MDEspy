@@ -19,7 +19,7 @@ export function hasPractice(doctor){
 }
 
 function getDocName(doctor) {
-  return '<h2 class="doc-info-name">'+ doctor.profile.first_name + ' ' +doctor.profile.last_name +'</h2>';
+  return `<h2 class="doc-info-name">${doctor.profile.first_name} ${doctor.profile.last_name}</h2>`;
 }
 
 function ifAccepting(practice){
