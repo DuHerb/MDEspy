@@ -30,6 +30,7 @@ $(document).ready(function(){
   //for testing purposes.  button clears session storage values
   $('#clearSession').on('click', ()=> sessionStorage.clear() );
 
+  //once category is selected, specialty select menu is populated
   $('#catSelect').change(()=> buildSpecSelect($('#catSelect').val()));
 
   //submit search parameters
@@ -40,28 +41,24 @@ $(document).ready(function(){
     //url builder will parse form data into unique URL strings
     let wholeName = $('#wholeName').val().trim();
     let docSpec = $('#specSelect').val();
-    console.log(wholeName, docSpec);
-    
     let url = new URLbuilder({
       'wholeName': wholeName,
       'docSpecUid': docSpec,
     }).buildUrl();
-
-    // let url = new URLbuilder($('#docName').val().trim()).buildUrl();
 
     //searches local storage for identical search results
     //via URL.  If match not found, a new call is made and data stored to sessionStorage.  Local storage is utilized to minimize API calls.
     if(!mdespy.getSearch(url)) {
       let newSearch = new Search(url);
       initSearchData(newSearch).then(()=> {
-        newSearch.display.showResultsByName();
+        newSearch.display.showResults();
         mdespy.searches.push(newSearch);
         sessionStorage.setItem('mdespy', JSON.stringify(mdespy));
       });
     } else {
       console.log('from local');
       let localSearchData = new Display(mdespy.getSearch(url).display.data);
-      localSearchData.showResultsByName();
+      localSearchData.showResults();
     }
   });
 });
