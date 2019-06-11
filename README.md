@@ -2,14 +2,14 @@
 MDEspy is a project application that helps it's users find doctor's in their area. Using the Better-Doctor api, the app will take location and search criteria inputed by a user and return the results.
 
 ## Author: Dustin Herboldshimer
-## Version 0.0.1 - 6/7/2019
+## Version 0.0.2 - 6/10/2019
 
 ### Installation:
 From your terminal:
 1. [your local dir]$git clone https://github.com/DuHerb/MDEspy.git
 2. [your local dir] MDEspy$npm install
 3. Run local Server: [your local dir] MDEspy$npm run start
-4. Run Jest: [your local dir] MDEspy$npm run test
+4. Run Jest: [your local dir] MDEspy$npm run test (no tests written in this project...yet)
 
 ### Specifications:
 | Spec                                              | Input                                             | Expected Output                                                                                                                                          |
