@@ -7,8 +7,12 @@ export class Display {
     this.data = data;
   }
 
-  showResultsByName() {
-    this.data.forEach(doctor => {if(hasPractice(doctor))buildResultsByName(doctor);});
+  showResults() {
+    if(this.data.length == 0) {
+      $('output').append('<h2>Your search found no results</h2>');
+    } else {
+      this.data.forEach(doctor => {if(hasPractice(doctor))buildResultsByName(doctor);});
+    }
   }
 }
 
@@ -63,6 +67,7 @@ export function buildSpecSelect(string) {
   let categories = JSON.parse(sessionStorage.getItem('categories'));
 
   $('#specSelect').empty();
+  $('#specSelect').append('<option>None</option>');
   categories.data.forEach(item => {
     if(item.category == string){
       $('#specSelect').append(`<option value="${item.uid}">${item.name}</option>`);
