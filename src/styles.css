@@ -1,6 +1,51 @@
+body {
+  width: 90%;
+  min-width: 1080px;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 2px solid lightgray;
+  line-height: 0.2;
+  margin-bottom:  25px;
+  box-shadow: 0 5px 5px #f1eece;
+}
+
+form {
+  border: 1px solid lightgray;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+form button {
+  background-color: #f1eece;
+  height: 20px;
+}
+
+#form-selects div {
+  margin: 10px;
+}
+
+#wholeName {
+  background-color: #f1eece;
+}
+
 .doc-info-box {
-  border-bottom: 2px solid black;
-  margin: 5px;
+  margin: 5px auto;
+  border: 1px solid lightgray;
+  border-radius: 30px;
+  padding: 30px 50px;
+  max-width: 500px;
+  box-shadow: 1px 5px 5px 2px #f1eece;
+}
+
+.doc-info-name {
+  margin: 0;
 }
 
 .doc-info-practice {
