@@ -1,7 +1,8 @@
-import { initData } from './functions';
+import { initSearchData } from './functions';
 import $ from 'jquery';
 import './styles.css';
-import { Search, URLbuilder } from './search';
+import { Search } from './search';
+import { URLbuilder } from './urlBuilder';
 import { Mdespy } from './mdespy';
 import { Display, buildCatSelect, buildSpecSelect } from './display';
 import { getCategories } from './apiCalls';
@@ -37,15 +38,22 @@ $(document).ready(function(){
     $('output').empty();
 
     //url builder will parse form data into unique URL strings
-    let docName = $('#docName').val().trim();
+    let wholeName = $('#wholeName').val().trim();
     let docSpec = $('#specSelect').val();
-    let url = new URLbuilder($('#docName').val().trim()).buildUrl();
+    console.log(wholeName, docSpec);
+    
+    let url = new URLbuilder({
+      'wholeName': wholeName,
+      'docSpecUid': docSpec,
+    }).buildUrl();
+
+    // let url = new URLbuilder($('#docName').val().trim()).buildUrl();
 
     //searches local storage for identical search results
     //via URL.  If match not found, a new call is made and data stored to sessionStorage.  Local storage is utilized to minimize API calls.
     if(!mdespy.getSearch(url)) {
       let newSearch = new Search(url);
-      initData(newSearch).then(()=> {
+      initSearchData(newSearch).then(()=> {
         newSearch.display.showResultsByName();
         mdespy.searches.push(newSearch);
         sessionStorage.setItem('mdespy', JSON.stringify(mdespy));

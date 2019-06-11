@@ -2,7 +2,7 @@
 import { Display } from './display';
 
 //initData() makes AJAX call and stores response into passed Search Object
-export function initData(search) {
+export function initSearchData(search) {
   return search.callDoctor().then(response => {
     search.meta = response.meta;
     search.display = new Display(response.data);
