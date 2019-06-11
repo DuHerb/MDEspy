@@ -2,7 +2,7 @@
 MDEspy is a project application that helps it's users find doctor's in their area. Using the Better-Doctor api, the app will take location and search criteria inputed by a user and return the results.
 
 ## Author: Dustin Herboldshimer
-## Version 0.0.1 = 6/7/2019
+## Version 0.0.1 - 6/7/2019
 
 ### Installation:
 From your terminal:
