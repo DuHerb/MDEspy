@@ -11,18 +11,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
+    <header>
+      <h1>MD Spy</h1>
+      <h3>Medical Doctors Are Standing By</h3>
+    </header>
 
     <form action="">
-      <label for="wholeName">Enter Doctor Name</label>
-      <input id="wholeName" type="text" name="wholeName">
-      <label for="catSelect">Select Category of Care: </label>
-      <select name="catSelect" id="catSelect">
-        <option selected>Select Category</option>
-      </select>
-      <label for="specSelect">Search by Specialty</label>
-      <select name="specSelect" id="specSelect">
-        <option selected>Select Category First</option>
-      </select>
+      <div>
+        <label for="wholeName">Enter Doctor Name</label>
+        <input id="wholeName" type="text" name="wholeName">
+      </div>
+
+      <div id="form-selects">
+        <div>
+          <label for="catSelect">Select Category of Care: </label>
+          <select name="catSelect" id="catSelect">
+            <option selected>Select Category</option>
+          </select>
+        </div>
+        <div>
+          <label for="specSelect">Search by Specialty</label>
+          <select name="specSelect" id="specSelect">
+            <option selected>Select Category First</option>
+          </select>
+        </div>
+      </div>
+
       <button id="searchSubmit">Find Doctor</button>
     </form>
     <button id="clearSession">Clear Session</button>
